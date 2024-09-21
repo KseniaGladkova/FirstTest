@@ -1,6 +1,7 @@
 
 public class MonthData {
-    int[] days = new int[30];
+    public static final int DAYS_IN_MONTH = 30;
+    int[] days = new int[DAYS_IN_MONTH];
 
     void printDaysAndStepsFromMonth() {
         for (int i = 0; i < days.length; i++) {
@@ -33,20 +34,17 @@ public class MonthData {
             if (days[i] >= goalByStepsPerDay) {
                 currentSeries++;
                 continue;
-            } else {
-                if (currentSeries > finalSeries) {
-                    finalSeries = currentSeries;
-                    currentSeries = 0;
-                    continue;
-                } else {
-                    currentSeries = 0;
-                    continue;
-                }
             }
+            if (currentSeries > finalSeries) {
+                finalSeries = currentSeries;
+                currentSeries = 0;
+                continue;
+            }
+            currentSeries = 0;
+            continue;
+
         }
         return finalSeries;
     }
-
-
 }
 

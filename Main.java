@@ -12,20 +12,23 @@ public class Main {
             int command = scanner.nextInt();
             if (command == 1) {
                 stepTracker.addNewNumberStepsPerDay();
-
-            } else if (command == 2) {
+                continue;
+            }
+            if (command == 2) {
                 stepTracker.changeStepGoal();
                 System.out.println("Цель изменена!");
-
-            } else if (command == 3) {
+                continue;
+            }
+            if (command == 3) {
                 stepTracker.printStatistic();
-            } else if (command == 0) {
+                continue;
+            }
+            if (command == 0) {
                 System.out.println("Всего доброго! Ждём вас снова!" + '♥');
                 break;
-
-            } else {
-                System.out.println("Извините, такой команды нет.");
             }
+            System.out.println("Извините, такой команды нет.");
+
         }
     }
 

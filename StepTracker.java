@@ -1,7 +1,18 @@
 import java.util.Scanner;
 
 public class StepTracker {
-    MonthData[] monthToData = new MonthData[12];
+    public static final int MONTHS_IN_YEAR = 12;
+    public static final String PRINT_MONTH_NUMBER = "Введите номер месяца: ";
+    public static final String CONDITION_FOR_THE_MONTH = "Номер вводимого месяца должен быть от 1 до 12 включительно";
+    public static final String PRINT_DAY_NUMBER = "Введите номер дня: ";
+    public static final String CONDITION_FOR_THE_DAY = "Номер вводимого дня должен быть от 1 до 30 включительно";
+    public static final String QUESTION_ABOUT_STEPS = "Сколько шагов вы прошли?";
+    public static final String CONDITION_FOR_THE_STEPS = "Количество шагов должно быть положительным числом";
+    public static final String FINISH = "Данные записаны!";
+    public static final String PRINT_NEW_GOAL = "Введите новую цель: ";
+    public static final String CONDITION_FOR_THE_GOAL = "Цель должна быть больше нуля";
+
+    MonthData[] monthToData = new MonthData[MONTHS_IN_YEAR];
     Scanner scanner;
     int goalByStepsPerDay = 10000;
     Converter converter = new Converter();
@@ -14,48 +25,48 @@ public class StepTracker {
     }
 
     void addNewNumberStepsPerDay() {
-        System.out.println("Введите номер месяца: ");
+        System.out.println(PRINT_MONTH_NUMBER);
         int month = scanner.nextInt();
         if ((month < 1) || (month > 12)) {
-            System.out.println("Номер вводимого месяца должен быть от 1 до 12 включительно");
+            System.out.println(CONDITION_FOR_THE_MONTH);
             return;
         }
-        System.out.println("Введите номер дня: ");
+        System.out.println(PRINT_DAY_NUMBER);
         int day = scanner.nextInt();
         if ((day < 1) || (day > 30)) {
-            System.out.println("Номер вводимого дня должен быть от 1 до 30 включительно");
+            System.out.println(CONDITION_FOR_THE_DAY);
             return;
         }
-        System.out.println("Сколько шагов вы прошли?");
+        System.out.println(QUESTION_ABOUT_STEPS);
         int steps = scanner.nextInt();
         if (steps < 0) {
-            System.out.println("Количество шагов должно быть положительным числом");
+            System.out.println(CONDITION_FOR_THE_STEPS);
             return;
         }
         MonthData monthData = monthToData[month - 1];
         monthData.days[day - 1] = steps;
-        System.out.println("Данные записаны!");
+        System.out.println(FINISH);
     }
 
     void changeStepGoal() {
-        System.out.println("Введите новую цель: ");
+        System.out.println(PRINT_NEW_GOAL);
         int newGoal = scanner.nextInt();
         if (newGoal < 0) {
-            System.out.println("Количество шагов должно быть положительным");
+            System.out.println(CONDITION_FOR_THE_STEPS);
             return;
         }
         if (newGoal == 0) {
-            System.out.println("Цель должна быть больше нуля");
+            System.out.println(CONDITION_FOR_THE_GOAL);
             return;
         }
         goalByStepsPerDay = newGoal;
     }
 
     void printStatistic() {
-        System.out.println("Введите номер месяца");
+        System.out.println(PRINT_MONTH_NUMBER);
         int month = scanner.nextInt();
         if ((month < 1) || (month > 12)) {
-            System.out.println("Номер вводимого месяца должен быть от 1 до 12 включительно");
+            System.out.println(CONDITION_FOR_THE_MONTH);
             return;
         }
         MonthData monthData = monthToData[month - 1];
